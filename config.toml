@@ -1,11 +1,8 @@
 # hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/theme/hugo-book/
 
-baseURL = 'https://tperry-r7.github.io/ux-writing-training/'
-title = 'Documenting APIs'
+baseURL = 'https://example.com/'
+title = 'Hugo Book'
 theme = 'book'
-
-# branch to publish from
-publishDir = "docs"
 
 # Book configuration
 disablePathToLower = true
@@ -17,7 +14,7 @@ enableGitInfo = true
   unsafe = true
 
 [markup.tableOfContents]
-  startLevel = 2
+  startLevel = 1
 
 # Multi-lingual mode config
 # There are different options to translate files
@@ -42,14 +39,14 @@ enableGitInfo = true
 [menu]
 # [[menu.before]]
 [[menu.after]]
-  name = "Github Repo"
+  name = "Github"
   url = "https://github.com/alex-shpak/hugo-book"
   weight = 10
 
-# [[menu.after]]
-#   name = "Hugo Themes"
-#   url = "https://themes.gohugo.io/hugo-book/"
-#   weight = 20
+[[menu.after]]
+  name = "Hugo Themes"
+  url = "https://themes.gohugo.io/hugo-book/"
+  weight = 20
 
 [params]
   # (Optional, default true) Controls table of contents visibility on right side of pages.
