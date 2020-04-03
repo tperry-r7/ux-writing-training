@@ -13,4 +13,4 @@ This will cover the basics of documenting a REST API. There are other [resources
     1. Within Stoplight, click on the Projects tab. 
     2. Then click on the project with {your-name} - Documenting APIs
 
-![Click your project name](../images/project_stoplight.png "Image Title")
+![Click your project name](./assets/images/project_stoplight.png "Image Title")
