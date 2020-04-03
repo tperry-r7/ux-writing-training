@@ -1,7 +1,7 @@
 # hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/theme/hugo-book/
 
-baseURL = 'https://example.com/'
-title = 'Hugo Book'
+baseURL = 'https://ux-writing-r7.netlify.com/docs/home'
+title = 'UX Writing'
 theme = 'book'
 
 # Book configuration
@@ -68,12 +68,12 @@ enableGitInfo = true
 
   # Set source repository location.
   # Used for 'Last Modified' and 'Edit this page' links.
-  BookRepo = 'https://github.com/alex-shpak/hugo-book'
+  BookRepo = 'https://github.com/tperry-r7/ux-writing-training'
 
   # Enable "Edit this page" links for 'doc' page type.
   # Disabled by default. Uncomment to enable. Requires 'BookRepo' param.
   # Path must point to 'content' directory of repo.
-  BookEditPath = 'edit/master/exampleSite/content'
+  BookEditPath = 'edit/master/ux-writing-training/content'
 
   # Configure the date format used on the pages
   # - In git information
