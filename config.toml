@@ -1,6 +1,6 @@
 # hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/theme/hugo-book/
 
-baseURL = 'https://ux-writing-r7.netlify.com/docs/home'
+baseURL = 'https://ux-writing-r7.netlify.com'
 title = 'UX Writing'
 theme = 'book'
 
