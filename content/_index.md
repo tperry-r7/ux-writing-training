@@ -7,9 +7,12 @@ type: docs
 
 This will cover the basics of documenting a REST API. It is meant to be a surface level overview so you can learn to dive deeper into documenting APIs and be able to communicate with engineers (who themselves may not know how to document an API). This is based on *Documenting APIs by Tom Johnson* [https://idratherbewriting.com/learnapidoc/docapis_introtoapis.html](https://idratherbewriting.com/learnapidoc/docapis_introtoapis.html). 
 
+## How this works
  - This will be mostly hands on, but at times there will be sections explaining more as you go along. 
  - We will be using OpenAPI 2.0. There have been changes since 3.0 but it is good to know both. Many of the Rapid7 APIs still use 2.0. 
  - Most of the reference links used will refer to the [Swagger documentation](https://swagger.io/docs/specification/about/) and not the [official GitHub repository](https://github.com/OAI/OpenAPI-Specification). This is because the GitHub repo acts as a deep dive reference while the Swagger documentation is a good overall description and easier to digest. After working with OpenAPI spec for a while, you will start to gravitate to the GitHub repo for advanced functionality. 
+
+You will be building a file from scratch and comparing the generated code to the UI elements. If you get stuck in Stoplight you will see a list of files labeled `01_petstore`. They correspond to the section numbers. You can jump ahead to see the final section code. 
 
 {{< hint info >}}
 See Resources for a loooong list of resources about APIs and documentation. Also see About APIs for a slightly deeper dive into APIs. 
@@ -20,8 +23,15 @@ See Resources for a loooong list of resources about APIs and documentation. Also
 1. Sign up for [Stoplight](https://next.stoplight.io/)
     1. Within Stoplight, click on the Projects tab. 
     2. Then click on the project with {your-name} - Documenting APIs
+    3. Click on the file `petstore_master.oas2`
 
 ![Click your project name](https://raw.githubusercontent.com/tperry-r7/ux-writing-training//master/assets/images/project_stoplight.png "Click Your Project Name In Stoplight")
+
+{{< hint info >}}
+**About the file names**
+The file type `.oas2` is specific to Stoplight only. Files should be saved elsewhere as `.json` or `.yaml`
+{{< /hint >}}
+
 
 ## Definitions
 
@@ -49,7 +59,7 @@ This article uses Python to walk through creating a simple API. It illustrates h
 [This is how easy it is to create a REST API](https://codeburst.io/this-is-how-easy-it-is-to-create-a-rest-api-8a25122ab1f3) by [Leon Wee](https://codeburst.io/@leonweecs?source=post_page-----8a25122ab1f3----------------------)
 {{< /hint >}}
 
-## OpenAPI History
+## OpenAPI history
 
 OpenAPI was previously known as Swagger. Swagger was [developed](https://en.wikipedia.org/wiki/OpenAPI_Specification#History) in 2010 by Tony Tam. It was then purchased in 2015 by [SmartBear Software](https://swagger.io/docs/specification/about/).  Later in 2015, SmartBear launched the [OpenAPI Initiative](https://www.openapis.org/) which open sourced the specification. In 2016, it was renamed from Swagger to [OpenAPI Specification (OAS)](https://github.com/OAI/OpenAPI-Specification).
 
@@ -59,11 +69,21 @@ Before purchase SmartBear developed a lot of tooling and structure around Swagge
 Swagger and OpenAPI (OAS) are the same thing. Most people still call it Swagger. 
 {{< /hint >}}
 
-# 01 Basic Structure
+# 01 Basic structure
 
 OpenAPI specifications can be written using [JSON](https://www.json.org/json-en.html) or [YAML](https://yaml.org/). We will use JSON for now. JSON versus YAML is a preference and doesn't change anything about the file or description of the API. 
 
 ## In Stoplight
+
+1. Select the file `01_petstore.oas2`
+2. Select the `Code` tab. 
+
+![Click Code Tab in Project](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/01_petstore_code.png)
+
+3. Review the information that is pre-populated for you. 
+4. Click the `Design` tab and compare the `Code` tab. 
+ 
+![Click Code Tab in Project](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/01_petstore_design.png)
 
 
 ## Metadata
@@ -114,7 +134,10 @@ The [URL](https://swagger.io/docs/specification/2-0/api-host-and-base-path/) tel
 Compare the Metadata for [OpenAPI 2.0](https://swagger.io/docs/specification/2-0/basic-structure/) to [OpenAPI 3.0](https://swagger.io/docs/specification/basic-structure/).
 {{< /hint >}}
 
-## Updating the Metadata
+
+# 02 Add more basic data
+
+
 
 
 # 02 Add a Path
