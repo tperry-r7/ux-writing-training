@@ -1,8 +1,9 @@
 ---
 title: Documenting APIs
 type: docs
-weight: 1
 ---
+
+
 
 # Documenting APIS
 
@@ -20,7 +21,7 @@ I was also used this as a chance to experiment a lot with displaying and organiz
 Also, remember to **SAVE**!
 
 {{< hint info >}}
-See Resources for a loooong list of resources about APIs and documentation. 
+See Resources for a list of resources about APIs and documentation. 
 {{< /hint >}}
 
 # Prerequisites
@@ -670,12 +671,169 @@ At this point your json should look like this:
 
 # 06 Definitions
 
-Now that we have our endpoints defined, we need to provide a definition for request and response.  These definitions are also commonly known as models. 
+Now that we have our endpoints defined, we need to provide a definition for request and response.  These definitions are also commonly known as models. Models are important because they help prevent duplication. So instead of needing to update a change in 5 locations, you can now update one location.  The `$ref` is used to reference models ([https://swagger.io/docs/specification/using-ref/](https://swagger.io/docs/specification/using-ref/))  in other documents or in the same document. If you have a really large code base that interacts with each other, referencing models in other files is common. 
 
 
 ## Create definitions
 
 We will break this into two steps, first we are going to create our definitions, then we will link our definitions back to the endpoints using the `$ref` tag. 
+
+1.On the **Design** tab, click the `+` sign next to models. 
+
+![Add new model](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/new_model.png)
+
+2. For key enter Pet. The key should be unique within the whole document. 
+3. Title can be left blank. It is not required. Titles are often used when they key is labeled as `petKey` or some other format. A title is a human friendly title. 
+4. Click on **Editor**. We are going to add the Pet schema listed below. 
+
+The Pet schema represents what a Pet looks like in the database. These are the fields that will be returned for viewing a single pet `/pet/{petId}` and the fields that are accepted when creating a new pet `/pet`. 
+The schema for a request and a response can be different and when documenting the API you should make the best decision for showing the API completely and reducing duplication. 
+
+5. Stoplight automatically loads an empty object for us. Click the `+` sign next to object and then it drops down to show a new field to fill in. 
+
+![Add new field ](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/add_new_field_model.png)
+
+Take a look at our json object. In `properties`.  The first property is `id`, it is an integer and has format of `int64`. 
+
+6. Change field to `id`. 
+7. Click **string** and change it to **integer**. Click **string** again to deselect it. Click the **X** to close the popup. 
+8. Click on **0 validations**, in the format drop down choose int64.  
+
+![Add property](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/add_property.gif)
+
+9. Save the document. 
+10. Review the Viewer, Raw Schema and Code tabs to see you changes. 
+
+To add `name`:
+1.  Click the `+` sign next to object and then it drops down to show a new field to fill in. 
+2. Change field to `name`. 
+3. Click the pencil next to `name`, add in the example `doggie` to the example field. 
+
+To add `category`:
+1.  Click the `+` sign next to object and then it drops down to show a new field to fill in. 
+2. Change field to `category`. 
+3. Click **string** and change it to `$ref`.  Leave the `$ref` field blank for now. We will create the model for it later. 
+
+To add `photoUrls`:
+
+1.  Click the `+` sign next to object and then it drops down to show a new field to fill in. 
+2. Change field to `photoUrls`. 
+3. Click **string** and change it to `array`.  Then change the Array Items Type to **string**.
+
+In the `photoUrls` array, there is a object called `items`. This is not referring to a specific item. It is a standard item key that refers to items in an array. 
+
+To add `status`:
+
+1.  Click the `+` sign next to object and then it drops down to show a new field to fill in. 
+2. Change field to `status`. 
+3. Leave the type as string. 
+4. Click the pencil next to `status`, add in the description from the Pet object. 
+5. Click **0 Validations**. 
+6. In the enum field, add the three items in the enum array. 
+
+Enum (https://swagger.io/docs/specification/data-models/enums/) lets you set all possible values for a string field. 
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "category": {
+      "$ref": "#/definitions/Category"
+    },
+    "name": {
+      "type": "string",
+      "example": "doggie"
+    },
+    "photoUrls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "pet status in the store",
+      "enum": [
+        "available",
+        "pending",
+        "sold"
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "photoUrls"
+  ]
+}
+```
+
+Repeat the process for the Order and Category Object. 
+
+**Order**
+```json
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "petId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "quanitity": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "shipDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "placed",
+        "approved",
+        "delivered"
+      ]
+    },
+    "complete": {
+      "type": "boolean"
+    }
+  }
+```
+**Category**
+```json
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}
+```
+
+## Finishing Up our API
+
+Now that you have defined all the models and endpoints, we need to link the models to the right locations in the document. 
+
+Link Category to Pet. 
+
+1. In the Models list, click on **Pet**. 
+2. Next to `category` click **$ref**. 
+3. In the dropdown, choose **This File** and select **Category**. 
+
+Update Add a New Pet. 
 
 
 ## Request 
