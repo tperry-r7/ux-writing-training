@@ -1,6 +1,7 @@
 ---
 title: Resources
-weight: 2
+weight: 3
 ---
 
+# Resources
 hi

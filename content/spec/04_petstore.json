@@ -1,0 +1,92 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Petstore API",
+      "version": "1.0.5",
+      "description": "This is a sample server Petstore server. For this sample, you can use the api key `special-key` to test the authorization filters.",
+      "termsOfService": "http://swagger.io/terms/",
+      "contact": {
+        "email": "apiteam@swagger.io"
+      },
+      "license": {
+        "name": "Apache 2.0",
+        "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "host": "petstore.swagger.io",
+    "paths": {
+      "/pets": {
+        "get": {
+          "responses": {
+            "200": {
+              "description": ""
+            }
+          },
+          "summary": "Returns all pets in a store",
+          "tags": [
+            "Pet"
+          ],
+          "description": "Returns a list of a all pets in a store. Use the `storeId=` to filter by store. ",
+          "operationId": "getAllPets"
+        }
+      },
+      "/pet": {
+        "post": {
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "summary": "Add a new pet",
+          "description": "Adds a new pet to the store.",
+          "operationId": "addNewPet",
+          "tags": [
+            "Pet"
+          ]
+        }
+      },
+      "/store/order": {
+        "post": {
+          "responses": {
+            "200": {
+              "description": "",
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "summary": "Create an order",
+          "tags": [
+            "Store"
+          ],
+          "operationId": "placeOrder"
+        }
+      }
+    },
+    "basePath": "/v2",
+    "schemes": [
+      "http",
+      "https"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "tags": [
+      {
+        "name": "Pet",
+        "description": "Everything about your pet. "
+      },
+      {
+        "name": "Store",
+        "description": "All about the store"
+      }
+    ]
+  }

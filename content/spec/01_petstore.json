@@ -1,0 +1,10 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "01_Petstore API",
+      "version": "1.0"
+    },
+    "host": "example.com",
+    "paths": {},
+    "schemes": []
+  }
