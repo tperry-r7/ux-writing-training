@@ -64,7 +64,8 @@
           "tags": [
             "Store"
           ],
-          "operationId": "placeOrder"
+          "operationId": "placeOrder",
+          "description": "Create an order in the store. "
         }
       }
     },
