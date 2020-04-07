@@ -94,7 +94,7 @@ We know we want people to:
 
 OpenAPI specifications can be written using [JSON](https://www.json.org/json-en.html) or [YAML](https://yaml.org/). We will use JSON for now. JSON versus YAML is a preference and doesn't change anything about the file or description of the API. 
 
-## In Stoplight
+## Create new file
 
 1. Create a new file by clicking on the `+` next to **Modeling**.
 2. In the **NEW FILE** box, name your file `petstore`.
@@ -140,7 +140,7 @@ Compare the Metadata for [OpenAPI 2.0](https://swagger.io/docs/specification/2-0
 
 We are going to add more basic information for Petstore including the `host`, `basepath`, `version` and `schemes`.  This information helps provide some basic data to the user and machine about the API. 
 
-## In Stoplight
+## Add more metadata
 
  1. Make sure you are on the **Design** tab and **Home** is highlighted. 
  2. Change the following fields to match.
@@ -207,7 +207,7 @@ At this point your json should look like this:
 
 [Tags](https://swagger.io/docs/specification/2-0/grouping-operations-with-tags/) are a way to group similar endpoints. Based on mapping out our API, we know we will have Pets and a Store. Tags are usually based on the endpoint, but you can create them to organize the information however you want. 
 
-## In Stoplight
+## Add tags
 This time, we will be adding tags in the **Code** tab. 
 
 1. In the `json` find the line that says:
@@ -319,7 +319,7 @@ A common structure is to use a collection `pets` then use a sub resource to retu
 We are going to add a GET method for pets. The path will be `/pets`. This is because we want our path to reflect the resource being used. For more on naming resources (endpoints), see https://restfulapi.net/resource-naming/.
 
 
-## In Stoplight
+## Add paths and methods
 
 Let's add a method for returning all pets. 
 
@@ -351,6 +351,29 @@ Follow the same steps to add the following two endpoints. If you're up to the ch
 	 - OperationID - placeOrder
 	 - Tag - Store
 
+## Base path, host and schemes
+
+A basic API request will look like this:
+
+```bash
+curl --request GET \
+  --url https://petstore.swagger.io/v2/pet/3 \
+  --header 'api_key: asdfasdf'
+```
+The [URL](https://swagger.io/docs/specification/2-0/api-host-and-base-path/) tells the user and machine where to find the data, the operation to perform and if the returning data needs to be filtered.
+
+![Swagger API path](https://static1.smartbear.co/swagger/media/images/url-structure.png)
+
+- `operation` - The verb (action) being taken. In the example, GET will return data. 
+-  `scheme` - The transfer protocols used by the API. Usually HTTP and HTTPS are used. Other, less common schemes are
+	- `ws` - [WebSocket](https://en.wikipedia.org/wiki/WebSocket)
+	- `wss` - [WebSocketSecure](https://en.wikipedia.org/wiki/WebSocket)
+- `host` - The domain name or IP address (IPv4) of the host that serves the API. It may include the port number. 
+- `basePath` - The URL prefix for all API paths, relative to the host root. It must start with a leading slash `/`. If `basePath` is not specified, it defaults to `/`, that is, all paths start at the host root.
+- `path` - The resources being requested. Using the InsightIDR API as an example `https://[region].api.insight.rapid7.com/idr/v1/investigations`, Investigations is the path. 
+- `query parameter` - Specify a filter for the data either being sent or returned. The query parameters and format can vary by API. 
+
+When all of the above elements are combined they are known as a Uniform Resource Identifier (URI) [https://restfulapi.net/resource-naming/](https://restfulapi.net/resource-naming/). This is also often called the URL. The structure of the URI is important because it lets a developer know the server and actions they can take. 
 
 {{< hint success >}}
 # Check In
@@ -454,29 +477,6 @@ At this point your json should look like this:
 {{< /expand >}}
 {{< /hint >}}
 
-## Base path, host and schemes
-
-A basic API request will look like this:
-
-```bash
-curl --request GET \
-  --url https://petstore.swagger.io/v2/pet/3 \
-  --header 'api_key: asdfasdf'
-```
-The [URL](https://swagger.io/docs/specification/2-0/api-host-and-base-path/) tells the user and machine where to find the data, the operation to perform and if the returning data needs to be filtered.
-
-![Swagger API path](https://static1.smartbear.co/swagger/media/images/url-structure.png)
-
-- `operation` - The verb (action) being taken. In the example, GET will return data. 
--  `scheme` - The transfer protocols used by the API. Usually HTTP and HTTPS are used. Other, less common schemes are
-	- `ws` - [WebSocket](https://en.wikipedia.org/wiki/WebSocket)
-	- `wss` - [WebSocketSecure](https://en.wikipedia.org/wiki/WebSocket)
-- `host` - The domain name or IP address (IPv4) of the host that serves the API. It may include the port number. 
-- `basePath` - The URL prefix for all API paths, relative to the host root. It must start with a leading slash `/`. If `basePath` is not specified, it defaults to `/`, that is, all paths start at the host root.
-- `path` - The resources being requested. Using the InsightIDR API as an example `https://[region].api.insight.rapid7.com/idr/v1/investigations`, Investigations is the path. 
-- `query parameter` - Specify a filter for the data either being sent or returned. The query parameters and format can vary by API. 
-
-When all of the above elements are combined they are known as a Uniform Resource Identifier (URI) [https://restfulapi.net/resource-naming/](https://restfulapi.net/resource-naming/). This is also often called the URL. The structure of the URI is important because it lets a developer know the server and actions they can take. 
 
 # 05 Parameters
 
@@ -492,7 +492,7 @@ These endpoints don't require you to know any information specific to a pet or a
 
 Other systems might allow you to get away with using brackets `[]` and `<>`. This means the file is not valid and will not work when using it for other applications or they wrote some extra code to make it work for them. It is not a valid spec file. 
 
-## In Stoplight
+## Add parameters
 
 Using the steps from [04 Add paths and methods](documenting_apis/#04-paths-and-methods), add the following endpoints. 
 
@@ -671,17 +671,67 @@ At this point your json should look like this:
 {{< /hint >}}
 
 # 06 Definitions
-Now that we have 
 
-# 07 Models
+Now that we have our endpoints defined, we need to provide a definition for request and response.  These definitions are also commonly known as models. 
+
+
+## Create definitions
+
+We will break this into two steps, first we are going to create our definitions, then we will link our definitions back to the endpoints using the `$ref` tag. 
+
+
+## Request 
+
+Request bodies are typically used with create and update operations (POST, PUT, PATCH). For example, when creating a resource using POST or PUT, the request body usually contains the representation of the resource to be created. Using our Petstore API as an example, you would make a request to create (POST) a new pet. You would need to include information such as 
+
+In this example the `--data` is the contains the json object we are sending to the pestore server, and request to create a new pet with an ID of 123. 
+
+```bash
+curl --request POST \
+  --url http://petstore.swagger.io/v2/pet \
+  --header 'content-type: application/json' \
+  --data '{
+	"id": 123,
+	"category": {
+		"id": 123,
+		"name": "string"
+	},
+	"name": "string",
+	"photoUrls": ["string"],
+	"status": "available"
+}'
+```
+
+
+## Response
+
+The response schema documents the response in a more comprehensive, general way, listing each property that could possibly be returned, what each property contains, the data format of the values, the structure, and other details. A response is what you expect to get back from the server after making your request. 
+
+### Response Codes
+A response code tells you and the server the status of the request. If a request was successfully, it will return a 200 or a 201 and usually the data requested. 
+
+Errors in the 400 range indicates there was an issue on the client(user) end. 
+Errors in the 500 range indicates there was an issue server side. 
+
+Not all servers will return all error codes. This is usually decided upon when designing the API. For a full list of response codes, see HTTP Response Codes (https://developer.mozilla.org/en-US/docs/Web/HTTP/Status). 
+
+```json
+{
+  "error": {
+    "status": 401,
+    "message": "Invalid access token"
+  }
+}
+```
 
 # 07 Extras
 
-Change order of the tags
-Other ways to use params
-Responses
-Other places you can use models
+COMING SOON!!! 
 
-[HTTP Response Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+ - Change order of the tags
+ - Other ways to use params
+ - Other places to put responses
+ - Other places you can use models
+ - Compare this to a 3.0 OpenAPI Spec
 
 
