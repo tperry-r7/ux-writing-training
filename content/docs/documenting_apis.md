@@ -4,8 +4,6 @@ type: docs
 weight: 1
 ---
 
-
-
 # Documenting APIS
 
 This will cover the basics of documenting a REST API. It is meant to be a surface level overview so you can learn to dive deeper into documenting APIs and be able to communicate with engineers (who themselves may not know how to document an API). This is based on *Documenting APIs by Tom Johnson* [https://idratherbewriting.com/learnapidoc/docapis_introtoapis.html](https://idratherbewriting.com/learnapidoc/docapis_introtoapis.html). 

@@ -5,4 +5,4 @@ weight: 2
 
 # Using Vale Locally
 
-hi
+Coming Soon!
