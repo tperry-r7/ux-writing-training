@@ -824,19 +824,6 @@ Repeat the process for the Order and Category Object.
 }
 ```
 
-## Finishing Up our API
-
-Now that you have defined all the models and endpoints, we need to link the models to the right locations in the document. 
-
-Link Category to Pet. 
-
-1. In the Models list, click on **Pet**. 
-2. Next to `category` click **$ref**. 
-3. In the dropdown, choose **This File** and select **Category**. 
-
-Update Add a New Pet. 
-
-
 ## Request 
 
 Request bodies are typically used with create and update operations (POST, PUT, PATCH). For example, when creating a resource using POST or PUT, the request body usually contains the representation of the resource to be created. Using our Petstore API as an example, you would make a request to create (POST) a new pet. You would need to include information such as 
@@ -881,7 +868,20 @@ Not all servers will return all error codes. This is usually decided upon when d
 }
 ```
 
-# 07 Extras
+## 07 Finishing up our API
+
+Now that you have defined all the models and endpoints, we need to link the models to the right locations in the document. 
+
+Link Category to Pet. 
+
+1. In the Models list, click on **Pet**. 
+2. Next to `category` click **$ref**. 
+3. In the dropdown, choose **This File** and select **Category**. 
+
+Update Add a New Pet. 
+
+
+# Extras
 
 COMING SOON!!! 
 
