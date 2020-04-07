@@ -40,11 +40,11 @@ enableGitInfo = true
 # [[menu.before]]
 [[menu.after]]
   name = "Github"
-  url = "https://github.com/alex-shpak/hugo-book"
+  url = "https://github.com/tperry-r7/ux-writing-training"
   weight = 10
 
 [[menu.after]]
-  name = "Hugo Themes"
+  name = "Hugo Book Theme"
   url = "https://themes.gohugo.io/hugo-book/"
   weight = 20
 
