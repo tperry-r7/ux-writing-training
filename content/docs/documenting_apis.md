@@ -25,7 +25,7 @@ Also, remember to **SAVE**!
 See Resources for a list of resources about APIs and documentation. 
 {{< /hint >}}
 
-# Prerequisites
+## Prerequisites
 
 1. Sign up for [Stoplight](https://next.stoplight.io/)
     1. Within Stoplight, click on the Projects tab. 
@@ -50,7 +50,7 @@ Throughout this course, you will see the following definitions used interchangea
 * **OAS** - OpenAPI specification, OpenAPI
 * **request** - Refers to any type of request against a REST API. This can include, GET, PUT, POST and DELETE.
 
-# About Stoplight
+## About Stoplight
 
 There are a lot of tools that can be use to write an OpenAPI specification file. Some such as [editor.swagger.io](http://editor.swagger.io/) just provide an interface, but Stoplight provides a much cleaner UI that allows you to fill in boxes and see the resulting code. It's a great tool to learn with. Stoplight also doesn't try to add a lot of extra "junk" to the file. 
 
