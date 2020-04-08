@@ -518,7 +518,7 @@ Using the steps from [04 Add paths and methods](documenting_apis/#04-paths-and-m
 	 - Method - GET
 	 - Endpoint - /store/order/{orderId}
 	 - Summary - Create an order
-	 - Description - Create an order in the store. 
+	 - Description - Return a single order
 	 - OperationID - getOrderByID
 	 - Tag - Store
 
