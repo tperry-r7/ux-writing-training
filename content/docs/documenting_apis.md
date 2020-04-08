@@ -916,6 +916,8 @@ Now we need to update the endpoints to have the correct request and response dat
 7. Review the changes in **Code** and **Design** tabs.
 <!-- Review the /pet in the code tab and go over that with them.-->
 
+![Add property](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/link_model.gif)
+
 Update the remaning endpoints. 
 * Return a pet by ID - Pet response
 * Returns all pets in a store - Pet response
