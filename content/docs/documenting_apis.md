@@ -30,7 +30,7 @@ See Resources for a list of resources about APIs and documentation.
 1. Sign up for [Stoplight](https://next.stoplight.io/)
     1. Within Stoplight, click on the Projects tab. 
     2. Then click on the project with {your-name} - Documenting APIs
-    3. Click on the file `petstore_master.oas2`
+    3. Click on the file `petstore.oas2`
 
 ![Click your project name](https://raw.githubusercontent.com/tperry-r7/ux-writing-training//master/assets/images/project_stoplight.png "Click Your Project Name In Stoplight")
 
