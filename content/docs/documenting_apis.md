@@ -916,6 +916,8 @@ Now we need to update the endpoints to have the correct request and response dat
 7. Review the changes in **Code** and **Design** tabs.
 <!-- Review the /pet in the code tab and go over that with them.-->
 
+Form data can be accepted by API. This is usually a key value pair. The most common use for uploading a file. 
+
 ![Add property](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/link_model.gif)
 
 Update the remaning endpoints. 
@@ -924,7 +926,6 @@ Update the remaning endpoints.
 * Create an order - Order request and response
 * Return an order by ID - Order response
 
-Form data can be accepted by API. This is usually a key value pair. The most common use for uploading a file. 
 
 # Extras
 
