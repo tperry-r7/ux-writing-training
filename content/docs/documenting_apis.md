@@ -516,7 +516,7 @@ Using the steps from [04 Add paths and methods](documenting_apis/#04-paths-and-m
 
  - View information about an order
 	 - Method - GET
-	 - Endpoint - /store/order
+	 - Endpoint - /store/order/{orderId}
 	 - Summary - Create an order
 	 - Description - Create an order in the store. 
 	 - OperationID - placeOrder
