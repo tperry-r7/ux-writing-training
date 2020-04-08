@@ -54,7 +54,7 @@ Throughout this course, you will see the following definitions used interchangea
 
 There are a lot of tools that can be use to write an OpenAPI specification file. Some such as [editor.swagger.io](http://editor.swagger.io/) just provide an interface, but Stoplight provides a much cleaner UI that allows you to fill in boxes and see the resulting code. It's a great tool to learn with. Stoplight also doesn't try to add a lot of extra "junk" to the file. 
 
-If you are trying to describe an API that is a bit more complicated and need to use descriptors such as [OAuth Flows](https://github.com/OAI/OpenAPI-Specification/blob/v3.0.1/versions/3.0.1.md#oauthFlowsObject) or [Discriminators](https://github.com/OAI/OpenAPI-Specification/blob/v3.0.1/versions/3.0.1.md#discriminatorObject), then you'll need to manually write the spec.
+If you are trying to describe an API that is a bit more complicated and need to use descriptors such as OAuth Flows (ttps://github.com/OAI/OpenAPI-Specification/blob/v3.0.1/versions/3.0.1.md#oauthFlowsObject) or Discriminators (https://github.com/OAI/OpenAPI-Specification/blob/v3.0.1/versions/3.0.1.md#discriminatorObject), then you'll need to manually write the spec.
 
 
 # What is OpenAPI specification?
@@ -66,9 +66,11 @@ This article uses Python to walk through creating a simple API. It illustrates h
 [This is how easy it is to create a REST API](https://codeburst.io/this-is-how-easy-it-is-to-create-a-rest-api-8a25122ab1f3) by [Leon Wee](https://codeburst.io/@leonweecs?source=post_page-----8a25122ab1f3----------------------)
 {{< /hint >}}
 
+<!-- No need to read it now. It's for reference later -->
+
 ## OpenAPI history
 
-OpenAPI was previously known as Swagger. Swagger was [developed](https://en.wikipedia.org/wiki/OpenAPI_Specification#History) in 2010 by Tony Tam. It was then purchased in 2015 by [SmartBear Software](https://swagger.io/docs/specification/about/).  Later in 2015, SmartBear launched the [OpenAPI Initiative](https://www.openapis.org/) which open sourced the specification. In 2016, it was renamed from Swagger to [OpenAPI Specification (OAS)](https://github.com/OAI/OpenAPI-Specification).
+OpenAPI was previously known as Swagger. Swagger was developed (https://en.wikipedia.org/wiki/OpenAPI_Specification#History) in 2010 by Tony Tam. It was then purchased in 2015 by SmartBear Software (https://swagger.io/docs/specification/about/). Later in 2015, SmartBear launched the OpenAPI Initiative (https://www.openapis.org/) which open sourced the specification. In 2016, it was renamed from Swagger to OpenAPI Specification (OAS)(https://github.com/OAI/OpenAPI-Specification).
 
 Before purchase SmartBear developed a lot of tooling and structure around Swagger including documentation, automation and creating SDKs. OAS is still referred to as Swagger because of the work around the specification that SmartBear did. SmartBear developed a lot of tooling before purchasing the project. 
 
@@ -78,7 +80,7 @@ Swagger and OpenAPI (OAS) are the same thing. Most people still call it Swagger.
 
 # Map out our API
 
-To help us visualize what we are documenting, let's think about an API in the way engineers and product managers do. We are building a Petstore API. 
+You are building an API for a petstore. To help us visualize what we are documenting, let's think about an API in the way engineers and product managers do. We are building a Petstore API. 
 
 We know we want people to: 
  - View information about their pets
@@ -89,26 +91,26 @@ We know we want people to:
  - Create a new order
  - View information about an order 
 
+With this in mind, you can decide what information they can create (add a pet) and what information they can view (view all the information about their pets). 
+
+<!-- I already worked out the fields that will be available. We'll get to them later on.-->
 
 # 01 Basic structure
 
-OpenAPI specifications can be written using [JSON](https://www.json.org/json-en.html) or [YAML](https://yaml.org/). We will use JSON for now. JSON versus YAML is a preference and doesn't change anything about the file or description of the API. 
+OpenAPI specifications can be written using [JSON](https://www.json.org/json-en.html) or [YAML](https://yaml.org/). You will use JSON for now. JSON versus YAML is a preference and doesn't change anything about the file or description of the API. 
 
-## Create new file
+##  Review your specification file
 
-1. Create a new file by clicking on the `+` next to **Modeling**.
-2. In the **NEW FILE** box, name your file `petstore`.
-3. Then click **Add .oas2.yml**
-
-![Create new file](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/create_new_file.png)
-
+1. Make sure you are in the `petstore.oas` file. 
 4. It will open on the **Design** tab. 
  
 ![Design Tab in Project](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/01_petstore_design.png)
 
 5. Click on the **Code** tab and compare what you see there versus the **Design** tab. 
 
+
 ## Metadata
+<!-- Talk about the fields that are there and show your screen -->
 
 Every OpenAPI specification must include the following [metadata](https://swagger.io/docs/specification/basic-structure/):
 
@@ -131,38 +133,41 @@ Every OpenAPI specification must include the following [metadata](https://swagge
 }
 ```
 
-{{< hint info >}}
-Compare the Metadata for [OpenAPI 2.0](https://swagger.io/docs/specification/2-0/basic-structure/) to [OpenAPI 3.0](https://swagger.io/docs/specification/basic-structure/).
-{{< /hint >}}
-
-
 # 02 More basic data
 
 We are going to add more basic information for Petstore including the `host`, `basepath`, `version` and `schemes`.  This information helps provide some basic data to the user and machine about the API. 
 
 ## Add more metadata
+<!-- Review this section on your screen. This data is because I am using a sample API provided by SmartBear (Swagger). Let's go ahead and add these fields, then I'll go over some of the less obvious ones. -->
 
  1. Make sure you are on the **Design** tab and **Home** is highlighted. 
  2. Change the following fields to match.
  
  - **Title** - Petstore API
- - **Description** - Whatever you want this to be.
+ - **Description** - Whatever you want this to be. *Optional*
  - **API Host** - petstore.swagger.io
  - **API Base Path** - /v2
- - **Version** - 1.0.5
+ - **Version** - 1.0.5. *Optional*
  - **Terms of Service URL** - http://swagger.io/terms/
  - **Global Settings**
 	 - **Supported Schemes** - HTTP and HTTPS
 	 - **Request Mime Types** - application/json
 	 - **Response Mime Types** - application/json
  - **Contact**
-	 - **Email** - apiteam@swagger.io
+	 - **Email** - apiteam@swagger.io *Optional*
  - **License**
-	 - **Name** - Apache 2.0
-	 - **URL** - http://www.apache.org/licenses/LICENSE-2.0.html
- 3. Click on the **Code** tab and compare what you see there versus the **Design** tab. 
+	 - **Name** - Apache 2.0 *Optional*
+	 - **URL** - http://www.apache.org/licenses/LICENSE-2.0.html *Optional*
 
-We will cover more on base paths in section 04 Add paths and methods. 
+<!-- Go over these terms here-->
+
+A few new terms were introduced here:
+* **MIME Type** -  (https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) is used to identify the type of data.
+* **Supported Schemes** - The supported transfer protocol. It is also known as the type of security for the data transfer.
+* **API Host and Base Path** - Combined these make up the server URL. We will cover more on base paths in section [04 Add paths and methods](documenting_apis/#04-paths-and-methods). 
+
+3. Click on the **Code** tab and compare what you see there versus the **Design** tab. 
+
 
 {{< hint success >}}
 # Check In
@@ -208,7 +213,9 @@ At this point your json should look like this:
 [Tags](https://swagger.io/docs/specification/2-0/grouping-operations-with-tags/) are a way to group similar endpoints. Based on mapping out our API, we know we will have Pets and a Store. Tags are usually based on the endpoint, but you can create them to organize the information however you want. 
 
 ## Add tags
+
 This time, we will be adding tags in the **Code** tab. 
+<!-- Show the steps on your screen -->
 
 1. In the `json` find the line that says:
 ```json
@@ -240,6 +247,7 @@ This time, we will be adding tags in the **Code** tab.
     }
 ]
  ```
+
  3. Repeat this for the `Pet` object. 
  ```json
  ...
@@ -257,7 +265,7 @@ This time, we will be adding tags in the **Code** tab.
     }
 ]
  ``` 
-4. Click on the **Code** tab and compare what you see there versus the **Design** tab. 
+4. Click on the **Design** tab and compare what you see there versus the **Code** tab. 
 
 {{< hint success >}}
 # Check In
@@ -308,16 +316,18 @@ At this point your json should look like this:
 {{< /hint >}}
 
 # 04 Paths and methods
-
-Paths are also referred to as endpoints. This is the location on the server the API is going to request data from. 
-
-A method is the type of request being made. Such as `GET` data, `PUT` or update data. For a full list of methods see  https://restfulapi.net/http-methods/. 
+A method is the type of request being made. Such as `GET` data, `PUT` or update data. For a full list of methods see https://restfulapi.net/http-methods/. 
 
 A resource is either singular or it is a collection. For example `pet` vs `pets`.
 A common structure is to use a collection `pets` then use a sub resource to return a singular piece of data in the resource `pets/{petId}`. 
 
+A path is the location on the resource. For example `/pets` is the resource, while `/pets/getPetByID` is the path. 
+
 We are going to add a GET method for pets. The path will be `/pets`. This is because we want our path to reflect the resource being used. For more on naming resources (endpoints), see https://restfulapi.net/resource-naming/.
 
+{{< hint info >}}
+OpenAPI 2.0 and OpenAPI 3.0 treat these differently. While we are focusing on 2.0, it's worth it to go back later and review OpenAPI 3.0 for host and bath paths. https://swagger.io/docs/specification/api-host-and-base-path/
+{{< /hint >}}
 
 ## Add paths and methods
 
@@ -370,7 +380,7 @@ The [URL](https://swagger.io/docs/specification/2-0/api-host-and-base-path/) tel
 	- `wss` - [WebSocketSecure](https://en.wikipedia.org/wiki/WebSocket)
 - `host` - The domain name or IP address (IPv4) of the host that serves the API. It may include the port number. 
 - `basePath` - The URL prefix for all API paths, relative to the host root. It must start with a leading slash `/`. If `basePath` is not specified, it defaults to `/`, that is, all paths start at the host root.
-- `path` - The resources being requested. Using the InsightIDR API as an example `https://[region].api.insight.rapid7.com/idr/v1/investigations`, Investigations is the path. 
+- `path` - The resources being requested. Using the InsightIDR API as an example https://[region].api.insight.rapid7.com/idr/v1/`investigations`. Investigations is the path. 
 - `query parameter` - Specify a filter for the data either being sent or returned. The query parameters and format can vary by API. 
 
 When all of the above elements are combined they are known as a Uniform Resource Identifier (URI) [https://restfulapi.net/resource-naming/](https://restfulapi.net/resource-naming/). This is also often called the URL. The structure of the URI is important because it lets a developer know the server and actions they can take. 
@@ -488,7 +498,7 @@ If you go back to our [API Map](documenting_apis/#map-out-our-api), we have adde
 -   View information about an order
 -  ~~View all pets in a store~~
 
-These endpoints don't require you to know any information specific to a pet or a order. We still need to add ID information. So instead of needing to sort through all the data, we can return or update the data we want. Using an ID in a path is called a parameter ([https://swagger.io/docs/specification/describing-parameters/](https://swagger.io/docs/specification/describing-parameters/)). In OpenAPI specs, parameters are identified by curly braces. `{}`. You can use curly braces in the server url as well. It means the data will be user supplied. 
+These endpoints don't require you to know any information about a specific pet or order. We still need to add ID information. So instead of needing to sort through all the data, we can return or update the data we want. Using an ID in a path is called a parameter ([https://swagger.io/docs/specification/describing-parameters/](https://swagger.io/docs/specification/describing-parameters/)). In OpenAPI specs, parameters are identified by curly braces. `{}`. You can use curly braces in the server url as well. It means the data will be user supplied. 
 
 Other systems might allow you to get away with using brackets `[]` and `<>`. This means the file is not valid and will not work when using it for other applications or they wrote some extra code to make it work for them. It is not a valid spec file. 
 
@@ -513,6 +523,9 @@ Using the steps from [04 Add paths and methods](documenting_apis/#04-paths-and-m
 	 - Tag - Store
 
 Click on the **Code** tab and compare what you see there versus the **Design** tab. 
+<!-- Also review the read tag to see what it looks like so far and how its organized based on tags-->
+
+
 
 {{< hint success >}}
 # Check In
@@ -672,14 +685,14 @@ At this point your json should look like this:
 
 # 06 Definitions
 
-Now that we have our endpoints defined, we need to provide a definition for request and response.  These definitions are also commonly known as models. Models are important because they help prevent duplication. So instead of needing to update a change in 5 locations, you can now update one location.  The `$ref` is used to reference models ([https://swagger.io/docs/specification/using-ref/](https://swagger.io/docs/specification/using-ref/))  in other documents or in the same document. If you have a really large code base that interacts with each other, referencing models in other files is common. 
+Now that we have our endpoints defined, we need to provide a definition for request and response. These definitions are also commonly known as models. Models are important because they help prevent duplication. So instead of needing to update a change in 5 locations, you can now update one location. The `$ref` is used to reference models ([https://swagger.io/docs/specification/using-ref/](https://swagger.io/docs/specification/using-ref/)) in other documents or in the same document. If you have a really large code base that interacts with each other, referencing models in other files is common. 
 
 
 ## Create definitions
 
 We will break this into two steps, first we are going to create our definitions, then we will link our definitions back to the endpoints using the `$ref` tag. 
 
-1.On the **Design** tab, click the `+` sign next to models. 
+1. On the **Design** tab, click the `+` sign next to models. 
 
 ![Add new model](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/new_model.png)
 
@@ -687,53 +700,9 @@ We will break this into two steps, first we are going to create our definitions,
 3. Title can be left blank. It is not required. Titles are often used when they key is labeled as `petKey` or some other format. A title is a human friendly title. 
 4. Click on **Editor**. We are going to add the Pet schema listed below. 
 
-The Pet schema represents what a Pet looks like in the database. These are the fields that will be returned for viewing a single pet `/pet/{petId}` and the fields that are accepted when creating a new pet `/pet`. 
-The schema for a request and a response can be different and when documenting the API you should make the best decision for showing the API completely and reducing duplication. 
+<!-- Go through the object-->
 
-5. Stoplight automatically loads an empty object for us. Click the `+` sign next to object and then it drops down to show a new field to fill in. 
-
-![Add new field ](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/add_new_field_model.png)
-
-Take a look at our json object. In `properties`.  The first property is `id`, it is an integer and has format of `int64`. 
-
-6. Change field to `id`. 
-7. Click **string** and change it to **integer**. Click **string** again to deselect it. Click the **X** to close the popup. 
-8. Click on **0 validations**, in the format drop down choose int64.  
-
-![Add property](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/add_property.gif)
-
-9. Save the document. 
-10. Review the Viewer, Raw Schema and Code tabs to see you changes. 
-
-To add `name`:
-1.  Click the `+` sign next to object and then it drops down to show a new field to fill in. 
-2. Change field to `name`. 
-3. Click the pencil next to `name`, add in the example `doggie` to the example field. 
-
-To add `category`:
-1.  Click the `+` sign next to object and then it drops down to show a new field to fill in. 
-2. Change field to `category`. 
-3. Click **string** and change it to `$ref`.  Leave the `$ref` field blank for now. We will create the model for it later. 
-
-To add `photoUrls`:
-
-1.  Click the `+` sign next to object and then it drops down to show a new field to fill in. 
-2. Change field to `photoUrls`. 
-3. Click **string** and change it to `array`.  Then change the Array Items Type to **string**.
-
-In the `photoUrls` array, there is a object called `items`. This is not referring to a specific item. It is a standard item key that refers to items in an array. 
-
-To add `status`:
-
-1.  Click the `+` sign next to object and then it drops down to show a new field to fill in. 
-2. Change field to `status`. 
-3. Leave the type as string. 
-4. Click the pencil next to `status`, add in the description from the Pet object. 
-5. Click **0 Validations**. 
-6. In the enum field, add the three items in the enum array. 
-
-Enum (https://swagger.io/docs/specification/data-models/enums/) lets you set all possible values for a string field. 
-
+{{< expand "Pet Object">}}
 ```json
 {
   "type": "object",
@@ -771,6 +740,57 @@ Enum (https://swagger.io/docs/specification/data-models/enums/) lets you set all
   ]
 }
 ```
+{{< /expand >}}
+
+The Pet schema represents what a Pet looks like in the database. These are the fields that will be returned for viewing a single pet `/pet/{petId}` and the fields that are accepted when creating a new pet `/pet`. 
+
+The schema for a request and a response can be different and when documenting the API you should make the best decision for showing the API completely and reducing duplication. 
+
+5. Stoplight automatically loads an empty object for us. Click the `+` sign next to object and then it drops down to show a new field to fill in. 
+
+![Add new field ](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/add_new_field_model.png)
+
+Take a look at our json object. In `properties`.  The first property is `id`, it is an integer and has format of `int64`. 
+
+6. Change field to `id`. 
+7. Click **string** and change it to **integer**. Click **string** again to deselect it. Click the **X** to close the popup. 
+8. Click on **0 validations**, in the format drop down choose int64.  
+
+![Add property](https://raw.githubusercontent.com/tperry-r7/ux-writing-training/master/assets/images/add_property.gif)
+
+9. Save the document. 
+10. Review the Viewer, Raw Schema and Code tabs to see you changes. 
+
+To add `name`:
+1.  Click the `+` sign next to object and then it drops down to show a new field to fill in. 
+2. Change field to `name`. 
+3. Click the pencil next to `name`, add in the example `doggie` to the example field. 
+<!-- Go over this box-->
+
+To add `category`:
+1.  Click the `+` sign next to object and then it drops down to show a new field to fill in. 
+2. Change field to `category`. 
+3. Click **string** and change it to `$ref`.  Leave the `$ref` field blank for now. We will create the model for it later. 
+
+To add `photoUrls`:
+
+1.  Click the `+` sign next to object and then it drops down to show a new field to fill in. 
+2. Change field to `photoUrls`. 
+3. Click **string** and change it to `array`.  Then change the Array Items Type to **string**.
+
+In the `photoUrls` array, there is a object called `items`. This is not referring to a specific item. It is a standard item key that refers to items in an array. 
+
+To add `status`:
+
+1.  Click the `+` sign next to object and then it drops down to show a new field to fill in. 
+2. Change field to `status`. 
+3. Leave the type as string. 
+4. Click the pencil next to `status`, add in the description from the Pet object. 
+5. Click **0 Validations**. 
+6. In the enum field, add the three items in the enum array. 
+
+Enum (https://swagger.io/docs/specification/data-models/enums/) lets you set all possible values for a string field. 
+
 
 Repeat the process for the Order and Category Object. 
 
@@ -826,9 +846,9 @@ Repeat the process for the Order and Category Object.
 
 ## Request 
 
-Request bodies are typically used with create and update operations (POST, PUT, PATCH). For example, when creating a resource using POST or PUT, the request body usually contains the representation of the resource to be created. Using our Petstore API as an example, you would make a request to create (POST) a new pet. You would need to include information such as 
+Request bodies are typically used with create and update operations (POST, PUT, PATCH). For example, when creating a resource using POST or PUT, the request body usually contains the representation of the resource to be created. Using our Petstore API as an example, you would make a request to create (POST) a new pet.
 
-In this example the `--data` is the contains the json object we are sending to the pestore server, and request to create a new pet with an ID of 123. 
+In this example the `--data` contains the json object we are sending to the pestore server to create a new pet with an ID of 123. 
 
 ```bash
 curl --request POST \
@@ -854,7 +874,7 @@ The response schema documents the response in a more comprehensive, general way,
 ### Response Codes
 A response code tells you and the server the status of the request. If a request was successfully, it will return a 200 or a 201 and usually the data requested. 
 
-Errors in the 400 range indicates there was an issue on the client(user) end. 
+Errors in the 400 range indicates there was an issue on the client (user) end. 
 Errors in the 500 range indicates there was an issue server side. 
 
 Not all servers will return all error codes. This is usually decided upon when designing the API. For a full list of response codes, see HTTP Response Codes (https://developer.mozilla.org/en-US/docs/Web/HTTP/Status). 
@@ -871,24 +891,50 @@ Not all servers will return all error codes. This is usually decided upon when d
 ## 07 Finishing up our API
 
 Now that you have defined all the models and endpoints, we need to link the models to the right locations in the document. 
+<!-- Right now Stoplight is giving you an error that Pet and Category are not linked -->
 
-Link Category to Pet. 
+To link Category to Pet: 
 
 1. In the Models list, click on **Pet**. 
-2. Next to `category` click **$ref**. 
+2. Next to category click **$ref**. 
 3. In the dropdown, choose **This File** and select **Category**. 
 
-Update Add a New Pet. 
+<!-- Have them look at the section for Category and Pet-->
 
+Now we need to update the endpoints to have the correct request and response data. For now we will leave all of our response codes as 200. This will walk you through updating `/pet Add a new pet`, then you will be able to update the rest on your own. 
+
+1. On the **Design** tab, click **Add a new pet**. 
+2. Find the heading **Request**, then click **Request Body**. 
+3. Choose type body(json/XML). 
+4. Click the **Editor** tab. 
+5. Click on **Object**.
+6. Change the type to **$ref** and select **Pet**. 
+7. Find the heading **Response**.
+4. Click the **Editor** tab. 
+5. Click on **Object**.
+6. Change the type to **$ref** and select **Pet**.  
+7. Review the changes in **Code** and **Design** tabs.
+<!-- Review the /pet in the code tab and go over that with them.-->
+
+Update the remaning endpoints. 
+* Return a pet by ID - Pet response
+* Returns all pets in a store - Pet response
+* Create an order - Order request and response
+* Return an order by ID - Order response
+
+Form data can be accepted by API. This is usually a key value pair. The most common use for uploading a file. 
 
 # Extras
 
 COMING SOON!!! 
 
- - Change order of the tags
- - Other ways to use params
- - Other places to put responses
- - Other places you can use models
- - Compare this to a 3.0 OpenAPI Spec
+- Change order of the tags
+- Other ways to use params
+- Other places to put responses
+- Other places you can use models
+- Compare this to a 3.0 OpenAPI Spec
+- Queries and filters
+- More on headers
+- Security defintions
 
 
