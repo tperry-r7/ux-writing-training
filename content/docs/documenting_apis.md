@@ -519,7 +519,7 @@ Using the steps from [04 Add paths and methods](documenting_apis/#04-paths-and-m
 	 - Endpoint - /store/order/{orderId}
 	 - Summary - Create an order
 	 - Description - Create an order in the store. 
-	 - OperationID - placeOrder
+	 - OperationID - getOrderByID
 	 - Tag - Store
 
 Click on the **Code** tab and compare what you see there versus the **Design** tab. 
