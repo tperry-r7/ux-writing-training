@@ -22,7 +22,7 @@ I was also used this as a chance to experiment a lot with displaying and organiz
 Also, remember to **SAVE**!
 
 {{< hint info >}}
-See Resources for a list of resources about APIs and documentation. 
+See [Resources](/docs/resources) for a list of resources about APIs and documentation. 
 {{< /hint >}}
 
 ## Prerequisites
@@ -35,7 +35,7 @@ See Resources for a list of resources about APIs and documentation.
 ![Click your project name](https://raw.githubusercontent.com/tperry-r7/ux-writing-training//master/assets/images/project_stoplight.png "Click Your Project Name In Stoplight")
 
 {{< hint info >}}
-**About the file names**
+**About the file names**<br>
 The file type `.oas2` is specific to Stoplight only. Files should be saved elsewhere as `.json` or `.yaml`
 {{< /hint >}}
 
