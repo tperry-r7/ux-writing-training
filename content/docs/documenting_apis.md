@@ -825,6 +825,7 @@ Repeat the process for the Order and Category Object.
       "type": "boolean"
     }
   }
+}
 ```
 **Category**
 ```json
