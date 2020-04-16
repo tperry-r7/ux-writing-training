@@ -4,8 +4,6 @@ type: docs
 weight: 1
 ---
 
-
-
 # Documenting APIS
 
 This will cover the basics of documenting a REST API. It is meant to be a surface level overview so you can learn to dive deeper into documenting APIs and be able to communicate with engineers (who themselves may not know how to document an API). This is based on *Documenting APIs by Tom Johnson* [https://idratherbewriting.com/learnapidoc/docapis_introtoapis.html](https://idratherbewriting.com/learnapidoc/docapis_introtoapis.html). 
@@ -498,7 +496,7 @@ If you go back to our [API Map](documenting_apis/#map-out-our-api), we have adde
 -   View information about an order
 -  ~~View all pets in a store~~
 
-These endpoints don't require you to know any information about a specific pet or order. We still need to add ID information. So instead of needing to sort through all the data, we can return or update the data we want. Using an ID in a path is called a parameter ([https://swagger.io/docs/specification/describing-parameters/](https://swagger.io/docs/specification/describing-parameters/)). In OpenAPI specs, parameters are identified by curly braces. `{}`. You can use curly braces in the server url as well. It means the data will be user supplied. 
+These endpoints we created don't require you to know any information about a specific pet or order. We still need to add ID information. So instead of needing to sort through all the data, we can return or update the data we want. Using an ID in a path is called a parameter ([https://swagger.io/docs/specification/describing-parameters/](https://swagger.io/docs/specification/describing-parameters/)). In OpenAPI specs, parameters are identified by curly braces. `{}`. You can use curly braces in the server url as well. It means the data will be user supplied. 
 
 Other systems might allow you to get away with using brackets `[]` and `<>`. This means the file is not valid and will not work when using it for other applications or they wrote some extra code to make it work for them. It is not a valid spec file. 
 
