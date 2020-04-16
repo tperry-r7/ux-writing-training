@@ -33,6 +33,7 @@ A collection of links that are helpful.
 * https://errata-ai.gitbook.io/vale/
 * https://stackedit.io/app#
 * http://editor.swagger.io/
+* https://http.cat/
 
 
 # Technical Writing
